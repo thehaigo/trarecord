@@ -48,7 +48,9 @@ defmodule Trarecord.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:desktop, "~> 1.4", targets: [:android, :ios, :desktop]},
+      {:wx, "~> 1.0.10", hex: :bridge, targets: [:android, :ios]}
     ]
   end
 
