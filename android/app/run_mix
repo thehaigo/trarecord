@@ -20,9 +20,9 @@ if [ ! -d "deps/desktop" ]; then
   mix deps.get
 fi
 
-#if [ ! -d "assets/node_modules" ]; then
-#  cd assets && npm i && cd ..
-#fi
+if [ ! -d "assets/node_modules" ]; then
+  cd assets && npm i && cd ..
+fi
 
 if [ -f "$APP_FILE" ]; then
   rm "$APP_FILE"
