@@ -10,13 +10,6 @@ import Config
 config :trarecord,
   ecto_repos: [Trarecord.Repo]
 
-# Configures the endpoint
-config :trarecord, TrarecordWeb.Endpoint,
-  url: [host: "localhost"],
-  render_errors: [view: TrarecordWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Trarecord.PubSub,
-  live_view: [signing_salt: "kG4OgJgf"]
-
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
@@ -39,6 +32,17 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
+config :tailwind,
+  version: "3.1.8",
+  default: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
@@ -49,4 +53,10 @@ config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
+if Mix.target() in [:desktop, :android, :ios] do
+  import_config "desktop.exs"
+else
+  import_config "web.exs"
+end
+
 import_config "#{config_env()}.exs"

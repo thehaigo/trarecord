@@ -17,7 +17,7 @@ config :trarecord, Trarecord.Repo,
 # you can enable the server option below.
 config :trarecord, TrarecordWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "je3pF67ClOsIAat6N+fO5PRT/chgPYsgfji7rGtGKKOHxj0ZBPJAAglTwVZTQVAJ",
+  secret_key_base: "YiLXYB2rHZ0lykdi5BgueKezNfD5fKvd1cGxmBNZEORdOSdhnUw3KZPt5kGRvpFU",
   server: false
 
 # In test we don't send emails.

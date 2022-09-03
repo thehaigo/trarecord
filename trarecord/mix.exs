@@ -18,6 +18,17 @@ defmodule Trarecord.MixProject do
   #
   # Type `mix help compile.app` for more information.
   def application do
+    application(Mix.target())
+  end
+
+  def application(target) when target in [:android, :ios, :desktop] do
+    [
+      mod: {Trarecord, []},
+      extra_applications: [:logger, :runtime_tools]
+    ]
+  end
+
+  def application(_) do
     [
       mod: {Trarecord.Application, []},
       extra_applications: [:logger, :runtime_tools]

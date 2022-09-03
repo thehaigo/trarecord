@@ -1,5 +1,13 @@
 import Config
 
+if Mix.target() == :ios do
+  config :trarecord, Trarecord.Repo, hostname: "127.0.0.1"
+end
+
+if Mix.target() == :android do
+  config :trarecord, Trarecord.Repo, hostname: "10.0.2.2"
+end
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.
