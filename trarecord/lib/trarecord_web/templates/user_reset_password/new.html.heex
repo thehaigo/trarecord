@@ -1,15 +1,25 @@
-<h1>Forgot your password?</h1>
+<section class="text-gray-600 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center  md:w-2/3 mx-auto mb-12">
+      <h1 class="normal-case text-4xl">Trarecord</h1>
+    </div>    
+    <div class="lg:w-1/2 md:w-2/3 flex flex-col mb-12 mx-auto">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Forgot your password?</h1>
+    </div>
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+      <.form let={f} for={:user} action={Routes.user_reset_password_path(@conn, :create)}>
+        <%= label f, :email, class: "label" %>
+        <%= email_input f, :email, required: true, class: "input input-bordered w-full" %>
 
-<.form let={f} for={:user} action={Routes.user_reset_password_path(@conn, :create)}>
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+        <div>
+          <%= submit "Send instructions to reset password", class: "btn btn-primary mt-6" %>
+        </div>
+      </.form>
 
-  <div>
-    <%= submit "Send instructions to reset password" %>
+      <p class="mt-6">
+        <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "label-text-alt link link-hover" %>  |
+        <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "label-text-alt link link-hover" %>
+      </p>
+    </div>
   </div>
-</.form>
-
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
-</p>
+</section>
