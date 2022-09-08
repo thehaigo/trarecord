@@ -10,6 +10,13 @@ import Config
 config :trarecord,
   ecto_repos: [Trarecord.Repo]
 
+# Configures the endpoint
+config :trarecord, TrarecordWeb.Endpoint,
+  url: [host: "localhost"],
+  render_errors: [view: TrarecordWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Trarecord.PubSub,
+  live_view: [signing_salt: "nt9pr/6W"]
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

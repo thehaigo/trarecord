@@ -19,7 +19,7 @@ defmodule Trarecord do
           id: TrerecordWindow,
           title: "TrerecordApp",
           size: {600, 500},
-          url: &TrarecordWeb.EndpointDesktop.url/0
+          url: &TrarecordWeb.Endpoint.url/0
         ]
       })
   end

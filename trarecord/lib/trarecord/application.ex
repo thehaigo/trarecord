@@ -15,7 +15,7 @@ defmodule Trarecord.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Trarecord.PubSub},
       # Start the Endpoint (http/https)
-      TrarecordWeb.EndpointWeb
+      TrarecordWeb.Endpoint
       # Start a worker by calling: Trarecord.Worker.start_link(arg)
       # {Trarecord.Worker, arg}
     ]
@@ -30,7 +30,7 @@ defmodule Trarecord.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    TrarecordWeb.EndpointWeb.config_change(changed, removed)
+    TrarecordWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

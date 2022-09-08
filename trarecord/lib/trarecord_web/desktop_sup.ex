@@ -12,7 +12,7 @@ defmodule TrarecordWeb.DesktopSup do
   def init([]) do
     children = [
       {Phoenix.PubSub, name: Trarecord.PubSub},
-      TrarecordWeb.EndpointDesktop
+      TrarecordWeb.Endpoint
     ]
 
     :session = :ets.new(:session, [:named_table, :public, read_concurrency: true])
