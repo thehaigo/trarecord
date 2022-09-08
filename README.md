@@ -34,4 +34,5 @@ To start your Android App:
   * Start Android Simulator with push build button
   
   *caution check your build gradle JDK
+  
 Now you can see Android App
