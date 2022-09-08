@@ -4,7 +4,6 @@ defmodule TrarecordWeb.UserAuth do
 
   alias Trarecord.Users
   alias TrarecordWeb.Router.Helpers, as: Routes
-  alias TrarecordWeb.Endpoint
 
   # Make the remember me cookie valid for 60 days.
   # If you want bump or reduce this value, also change
@@ -76,7 +75,7 @@ defmodule TrarecordWeb.UserAuth do
     user_token && Users.delete_session_token(user_token)
 
     if live_socket_id = get_session(conn, :live_socket_id) do
-      Endpoint.module().broadcast(live_socket_id, "disconnect", %{})
+      TrarecordWeb.Endpoint.broadcast(live_socket_id, "disconnect", %{})
     end
 
     conn
