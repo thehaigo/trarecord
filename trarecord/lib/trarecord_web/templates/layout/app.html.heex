@@ -1,5 +1,17 @@
 <main class="container">
-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+  <div class="toast toast-end z-40">
+      <div>
+        <p 
+          class={"alert alert-info " <> if is_nil(get_flash(@conn, :info)), do: "hidden", else: "animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) "}
+          role="alert"
+        ><%= get_flash(@conn, :info) %></p>
+      </div>
+      <div>
+        <p 
+          class={"alert alert-danger " <> if is_nil(get_flash(@conn, :error)), do: "hidden", else: "animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) "}
+          role="alert"
+        ><%= get_flash(@conn, :error) %></p>
+      </div>
+  </div>
   <%= @inner_content %>
 </main>
