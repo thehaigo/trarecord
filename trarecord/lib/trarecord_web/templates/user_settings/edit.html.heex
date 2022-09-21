@@ -1,3 +1,4 @@
+<TrarecordWeb.Components.Navigation.header title="Setting" />
 <section class="text-gray-600 body-font relative">
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-1/2 md:w-2/3 flex flex-col mb-12 mx-auto">
@@ -25,7 +26,7 @@
           <%= error_tag f, :current_password %>
 
           <div class="mt-5">
-            <%= submit "Change email", class: "btn btn-primary" %>
+            <%= submit "Change email", class: "btn btn-block btn-primary" %>
           </div>
         </.form>
       </div>
@@ -54,10 +55,15 @@
           <%= error_tag f, :current_password %>
 
           <div class="mt-6">
-            <%= submit "Change password", class: "btn btn-primary" %>
+            <%= submit "Change password", class: "btn btn-block btn-primary" %>
           </div>
         </.form>
       </div>
+      <div class="mt-6">
+        <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-block btn-error" %>
+      </div>
+
     </div>
   </div>
 </section>
+<Navigation.bottom_tab title="Setting" />

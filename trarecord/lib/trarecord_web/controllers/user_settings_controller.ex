@@ -4,10 +4,10 @@ defmodule TrarecordWeb.UserSettingsController do
   alias Trarecord.Users
   alias TrarecordWeb.UserAuth
 
-  plug :assign_email_and_password_changesets
+  plug(:assign_email_and_password_changesets)
 
   def edit(conn, _params) do
-    render(conn, "edit.html")
+    render(assign(conn, :title, "Setting"), "edit.html")
   end
 
   def update(conn, %{"action" => "update_email"} = params) do
