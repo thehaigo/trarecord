@@ -44,7 +44,6 @@ defmodule Trarecord.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bcrypt_elixir, "~> 3.0"},
       {:phoenix, "~> 1.6.11"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
@@ -63,7 +62,8 @@ defmodule Trarecord.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:desktop, "~> 1.4", targets: [:android, :ios, :desktop]},
       {:wx, "~> 1.0.10", hex: :bridge, targets: [:android, :ios]},
-      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
+      {:pbkdf2_elixir, "~> 2.0"}
     ]
   end
 
