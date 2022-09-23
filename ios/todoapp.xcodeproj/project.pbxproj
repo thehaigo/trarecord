@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		C09B6E1F28BA7EF600B9B876 /* liberlang.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECB3384628B396F7001E8DC7 /* liberlang.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C09B6E2128BA7EF800B9B876 /* ZIPFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8A1FC62702233000054F1C /* ZIPFoundation.xcframework */; };
 		C09B6E2228BA7EF800B9B876 /* ZIPFoundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8A1FC62702233000054F1C /* ZIPFoundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C0EFAE1E28DDF00B00E15F39 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAE1D28DDF00B00E15F39 /* WebViewController.swift */; };
 		EC712AB026F6964C0066E483 /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC712AAF26F6964C0066E483 /* TodoApp.swift */; };
 		EC712AB226F6964C0066E483 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC712AB126F6964C0066E483 /* ContentView.swift */; };
 		EC712AB426F6964C0066E483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC712AB326F6964C0066E483 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C0EFAE1D28DDF00B00E15F39 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		EC712AAC26F6964C0066E483 /* todoapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todoapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC712AAF26F6964C0066E483 /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
 		EC712AB126F6964C0066E483 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		EC712AAE26F6964C0066E483 /* todoapp */ = {
 			isa = PBXGroup;
 			children = (
+				C0EFAE1D28DDF00B00E15F39 /* WebViewController.swift */,
 				EC712AAF26F6964C0066E483 /* TodoApp.swift */,
 				EC712AB126F6964C0066E483 /* ContentView.swift */,
 				EC8A1FBB26FF226000054F1C /* Bridge.swift */,
@@ -151,7 +154,7 @@
 				};
 			};
 			buildConfigurationList = EC712AA726F6964C0066E483 /* Build configuration list for PBXProject "todoapp" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC8A1FBC26FF226000054F1C /* Bridge.swift in Sources */,
+				C0EFAE1E28DDF00B00E15F39 /* WebViewController.swift in Sources */,
 				EC8A1FD12704E9AB00054F1C /* WebView.swift in Sources */,
 				EC712AB226F6964C0066E483 /* ContentView.swift in Sources */,
 				EC712AB026F6964C0066E483 /* TodoApp.swift in Sources */,
