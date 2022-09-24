@@ -1,0 +1,13 @@
+<div class="card w-80">
+  <div class="card-body items-center text-center">
+    <h2 class="card-title mb-4">Are you sure?</h2>
+    <div class="card-actions justify-end">
+      <button class="btn btn-ghost" phx-click={JS.dispatch("click", to: "#close")}>Cancel</button>
+      <button class="btn btn-error" 
+              phx-click="delete" 
+              phx-value-id={@item.id}
+              phx-target={@myself}
+      >Delete</button>
+    </div>
+  </div>
+</div>
