@@ -1,46 +1,69 @@
-<h1>Show Item</h1>
+<Navigation.header 
+  title="Items" 
+  back={Routes.item_index_path(@socket, :index)} 
+  action={live_patch "Edit", to: Routes.item_show_path(@socket, :edit, @item), class: "btn btn-ghost normal-case text-xl"}
+/>
+<section class="text-gray-600 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-1/2 md:w-2/3 flex flex-col mb-4 mx-auto">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Show Item</h1>
+    </div>
 
-<%= if @live_action in [:edit] do %>
-  <.modal return_to={Routes.item_show_path(@socket, :show, @item)}>
-    <.live_component
-      module={TrarecordWeb.ItemLive.FormComponent}
-      id={@item.id}
-      title={@page_title}
-      action={@live_action}
-      item={@item}
-      return_to={Routes.item_show_path(@socket, :show, @item)}
-    />
-  </.modal>
-<% end %>
+    <%= if @live_action in [:edit] do %>
+      <.modal return_to={Routes.item_show_path(@socket, :show, @item)}>
+        <.live_component
+          module={TrarecordWeb.ItemLive.FormComponent}
+          id={@item.id}
+          title={@page_title}
+          action={@live_action}
+          item={@item}
+          return_to={Routes.item_show_path(@socket, :show, @item)}
+        />
+      </.modal>
+    <% end %>
 
-<ul>
+    <%= if @live_action in [:delete] do %>
+      <.modal return_to={Routes.item_show_path(@socket, :show, @item)}>
+        <.live_component
+          module={TrarecordWeb.ItemLive.ConfirmComponent}
+          id={@item.id}
+          title={@page_title}
+          action={@live_action}
+          item={@item}
+          return_to={Routes.item_index_path(@socket, :index)}
+        />
+      </.modal>
+    <% end %>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @item.name %>
-  </li>
+    <ul>
 
-  <li>
-    <strong>Url:</strong>
-    <%= @item.url %>
-  </li>
+      <li>
+        <strong>Name:</strong>
+        <%= @item.name %>
+      </li>
 
-  <li>
-    <strong>Image:</strong>
-    <%= @item.image %>
-  </li>
+      <li>
+        <strong>Url:</strong>
+        <a href={@item.url}><%= @item.url %></a>
+      </li>
 
-  <li>
-    <strong>Category:</strong>
-    <%= @item.category %>
-  </li>
+      <li>
+        <strong>Image:</strong>
+        <img class="object-contain w-1/2" src={@item.image} />
+      </li>
 
-  <li>
-    <strong>Status:</strong>
-    <%= @item.status %>
-  </li>
+      <li>
+        <strong>Category:</strong>
+        <%= @item.category %>
+      </li>
 
-</ul>
+      <li>
+        <strong>Have It:</strong>
+        <%= @item.status %>
+      </li>
 
-<span><%= live_patch "Edit", to: Routes.item_show_path(@socket, :edit, @item), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.item_index_path(@socket, :index) %></span>
+    </ul>
+    <span><%= live_patch "Delete", to: Routes.item_show_path(@socket, :delete, @item), class: "btn btn-block btn-error normal-case" %></span>
+  </div>
+</section>
+<Navigation.bottom_tab title="Items" />

@@ -2,6 +2,7 @@ defmodule TrarecordWeb.ItemLive.Show do
   use TrarecordWeb, :live_view
 
   alias Trarecord.Items
+  alias TrarecordWeb.Components.Navigation
 
   @impl true
   def mount(_params, _session, socket) do
@@ -18,4 +19,5 @@ defmodule TrarecordWeb.ItemLive.Show do
 
   defp page_title(:show), do: "Show Item"
   defp page_title(:edit), do: "Edit Item"
+  defp page_title(:delete), do: "Delete Item"
 end
