@@ -1,47 +1,70 @@
-<h1>Listing Items</h1>
+<Navigation.header 
+  title="Items" 
+  back={false} 
+  action={live_patch "Add Item", to: Routes.item_index_path(@socket, :new), class: "btn btn-ghost normal-case"}
+/>
+<section class="text-gray-600 body-font relative h-screen">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-1/2 md:w-2/3 flex flex-col mb-4 mx-auto">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Listing Items</h1>
+    </div>
+    <section>
+      <div class="container px-5 py-4 mx-auto">
+        <div class="flex flex-wrap -m-4">
+          <%= for item <- @items do %>
+            <div id={"item-#{item.id}"} class="card card-compact bg-base-100 shadow-2xl lg:w-1/4 md:w-1/2 p-4 w-full mb-4">
+              <figure><img src={item.image} alt="" /></figure>
+              <div class="card-body">
+                <h2 class="card-title">
+                  <%= item.name %>
+                  <%= if item.status do %>
+                    <div class="badge badge-secondary">Have It</div>
+                  <% else %>
+                    <div class="badge badge-secondary">Wants It</div>
+                  <% end %>
+                  <div class="badge"><%= item.category %></div>
+                </h2>
+                
+                <a class="link" href={item.url}><%= item.url %></a>
+              </div>
+              <div class="card-actions justify-end">
+                <span><%= live_redirect "Show", to: Routes.item_show_path(@socket, :show, item), class: "btn normal-case" %></span>
+                <span><%= live_patch "Edit", to: Routes.item_index_path(@socket, :edit, item), class: "btn normal-case" %></span>
+                <span><%= live_patch "Delete", to: Routes.item_index_path(@socket, :delete, item), class: "btn btn-error normal-case" %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
 
-<%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.item_index_path(@socket, :index)}>
-    <.live_component
-      module={TrarecordWeb.ItemLive.FormComponent}
-      id={@item.id || :new}
-      title={@page_title}
-      action={@live_action}
-      item={@item}
-      return_to={Routes.item_index_path(@socket, :index)}
-    />
-  </.modal>
-<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Url</th>
-      <th>Image</th>
-      <th>Category</th>
-      <th>Status</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="items">
-    <%= for item <- @items do %>
-      <tr id={"item-#{item.id}"}>
-        <td><%= item.name %></td>
-        <td><%= item.url %></td>
-        <td><%= item.image %></td>
-        <td><%= item.category %></td>
-        <td><%= item.status %></td>
-
-        <td>
-          <span><%= live_redirect "Show", to: Routes.item_show_path(@socket, :show, item) %></span>
-          <span><%= live_patch "Edit", to: Routes.item_index_path(@socket, :edit, item) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: item.id, data: [confirm: "Are you sure?"] %></span>
-        </td>
-      </tr>
+    <%= if @live_action in [:new, :edit] do %>
+      <.modal return_to={Routes.item_index_path(@socket, :index)}>
+        <.live_component
+          module={TrarecordWeb.ItemLive.FormComponent}
+          id={@item.id || :new}
+          title={@page_title}
+          action={@live_action}
+          item={@item}
+          return_to={Routes.item_index_path(@socket, :index)}
+        />
+      </.modal>
     <% end %>
-  </tbody>
-</table>
 
-<span><%= live_patch "New Item", to: Routes.item_index_path(@socket, :new) %></span>
+    <%= if @live_action in [:delete] do %>
+      <.modal return_to={Routes.item_index_path(@socket, :index)}>
+        <.live_component
+          module={TrarecordWeb.ItemLive.ConfirmComponent}
+          id={@item.id}
+          title={@page_title}
+          action={@live_action}
+          item={@item}
+          return_to={Routes.item_index_path(@socket, :index)}
+        />
+      </.modal>
+    <% end %>
+
+  </div>
+</section>
+<Navigation.bottom_tab title="Items" />

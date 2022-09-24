@@ -3,6 +3,7 @@ defmodule TrarecordWeb.ItemLive.Index do
 
   alias Trarecord.Items
   alias Trarecord.Items.Item
+  alias TrarecordWeb.Components.Navigation
 
   @impl true
   def mount(_params, _session, socket) do
@@ -24,6 +25,12 @@ defmodule TrarecordWeb.ItemLive.Index do
     socket
     |> assign(:page_title, "New Item")
     |> assign(:item, %Item{})
+  end
+
+  defp apply_action(socket, :delete, %{"id" => id}) do
+    socket
+    |> assign(:page_title, "Delete Item")
+    |> assign(:item, Items.get_item!(id))
   end
 
   defp apply_action(socket, :index, _params) do
