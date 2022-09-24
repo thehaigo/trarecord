@@ -1,11 +1,25 @@
 import Config
 
 if Mix.target() == :ios do
-  config :trarecord, Trarecord.Repo, hostname: "127.0.0.1"
+  config :trarecord, Trarecord.Repo,
+    username: "postgres",
+    password: "postgres",
+    hostname: "127.0.0.1",
+    database: "trarecord_dev",
+    stacktrace: true,
+    show_sensitive_data_on_connection_error: true,
+    pool_size: 10
 end
 
 if Mix.target() == :android do
-  config :trarecord, Trarecord.Repo, hostname: "10.0.2.2"
+  config :trarecord, Trarecord.Repo,
+    username: "postgres",
+    password: "postgres",
+    hostname: "10.0.2.2",
+    database: "trarecord_dev",
+    stacktrace: true,
+    show_sensitive_data_on_connection_error: true,
+    pool_size: 10
 end
 
 # For production, don't forget to configure the url host
