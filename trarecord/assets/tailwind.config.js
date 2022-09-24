@@ -10,7 +10,17 @@ module.exports = {
     '../lib/*_web/**/*.*ex'
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        disappear: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
+      },
+      animation: {
+        disappear: "disappear 3s ease 2s 1 forwards",
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

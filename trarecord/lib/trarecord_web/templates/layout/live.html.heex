@@ -1,7 +1,7 @@
 <main class="container">
-  <div class="toast toast-end z-40">
+  <div class="toast toast-end z-40 animate-disappear">
     <div>
-      <p class={"alert alert-info " <> if is_nil(live_flash(@flash, :info)), do: "hidden", else: ""}
+      <p class={"alert alert-info " <> if is_nil(live_flash(@flash, :info)), do: "hidden", else: "animate-disappear"}
           role="alert"
           phx-click="lv:clear-flash"
           phx-value-key="info">
@@ -9,7 +9,7 @@
       </p>
     </div>
     <div>
-      <p  class={"alert alert-danger " <> if is_nil(live_flash(@flash, :error)), do: "hidden", else: ""}
+      <p  class={"alert alert-danger " <> if is_nil(live_flash(@flash, :error)), do: "hidden", else: "animate-disappear"}
           role="alert"
           phx-click="lv:clear-flash"
           phx-value-key="error">
