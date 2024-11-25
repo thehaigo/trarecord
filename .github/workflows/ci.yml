@@ -17,6 +17,8 @@ jobs:
   test: 
     name: Build & Test
     runs-on: ubuntu-latest
+    env:
+      ImageOS: ubuntu24 
     services:
       db:
         image: postgres:latest
