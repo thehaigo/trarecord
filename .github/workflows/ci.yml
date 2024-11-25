@@ -35,6 +35,7 @@ jobs:
         with:
           otp-version: '26.2.5'
           elixir-version: '1.17.2'
+
       - name: Cache deps and _build
         uses: actions/cache@v3
         with:
@@ -43,8 +44,12 @@ jobs:
             _build
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}      
+            ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
 
+      - name: Dependencies install
+        run: |
+          apt-get update -y && apt-get install -y libwxgtk3.2-dev libwxgtk-webview3.2-dev
+          
       - name: Install Dependencies      
         run: mix deps.get
 
