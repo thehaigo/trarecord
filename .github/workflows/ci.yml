@@ -59,4 +59,5 @@ jobs:
 
       - name: Run Test
         run: mix test
-        env: DISPLAY: 0
+        env: 
+          DISPLAY: 0
