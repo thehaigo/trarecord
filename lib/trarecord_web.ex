@@ -43,7 +43,7 @@ defmodule TrarecordWeb do
         layouts: [html: TrarecordWeb.Layouts]
 
       import Plug.Conn
-      import TrarecordWeb.Gettext
+      use Gettext, backend: TrarecordWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -85,7 +85,7 @@ defmodule TrarecordWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import TrarecordWeb.CoreComponents
-      import TrarecordWeb.Gettext
+      use Gettext, backend: TrarecordWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

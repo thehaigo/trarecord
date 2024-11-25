@@ -17,7 +17,7 @@ defmodule TrarecordWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import TrarecordWeb.Gettext
+  use Gettext, backend: TrarecordWeb.Gettext
 
   @doc """
   Renders a modal.
