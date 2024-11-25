@@ -22,6 +22,7 @@ defmodule Trarecord.Application do
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
+    :session = :ets.new(:session, [:named_table, :public, read_concurrency: true])
     opts = [strategy: :one_for_one, name: Trarecord.Supervisor]
     Supervisor.start_link(children, opts)
   end
