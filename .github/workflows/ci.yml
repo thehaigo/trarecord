@@ -48,8 +48,8 @@ jobs:
 
       - name: Dependencies install
         run: |
-          apt-get update -y && apt-get install -y libwxgtk3.2-dev libwxgtk-webview3.2-dev
-          
+         sudo apt-get update -y && apt-get install -y libwxgtk3.2-dev libwxgtk-webview3.2-dev
+
       - name: Install Dependencies      
         run: mix deps.get
 
