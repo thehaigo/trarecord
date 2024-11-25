@@ -18,7 +18,7 @@ defmodule Trarecord.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Trarecord.Application, []},
+      mod: {Trarecord, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -32,6 +32,9 @@ defmodule Trarecord.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:desktop, "~> 1.5"},
+      {:wx, "~> 1.1", hex: :bridge, targets: [:android, :ios]},
+      {:plug_crypto, github: "thehaigo/plug_crypto", override: true},
       {:phoenix, "~> 1.7.14"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
@@ -58,7 +61,8 @@ defmodule Trarecord.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:desktop_setup, github: "thehaigo/desktop_setup", only: :dev}
     ]
   end
 
