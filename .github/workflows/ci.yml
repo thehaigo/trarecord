@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       ImageOS: ubuntu24 
+      DISPLAY: 0
     services:
       db:
         image: postgres:latest
@@ -58,3 +59,4 @@ jobs:
 
       - name: Run Test
         run: mix test
+        env: DISPLAY: 0
