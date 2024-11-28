@@ -43,6 +43,7 @@ defmodule Trarecord.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 3.0"},
       {:desktop, "~> 1.5", only: [:dev, :prod]},
       {:wx, "~> 1.1", hex: :bridge, targets: [:android, :ios]},
       {:plug_crypto, github: "thehaigo/plug_crypto", override: true},
