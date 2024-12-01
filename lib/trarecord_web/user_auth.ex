@@ -27,6 +27,8 @@ defmodule TrarecordWeb.UserAuth do
   """
   def log_in_user(conn, user, params \\ %{}) do
     token = Accounts.generate_user_session_token(user)
+    File.write!(Trarecord.token_path(), Base.encode64(token))
+
     user_return_to = get_session(conn, :user_return_to)
 
     conn
@@ -75,6 +77,7 @@ defmodule TrarecordWeb.UserAuth do
   def log_out_user(conn) do
     user_token = get_session(conn, :user_token)
     user_token && Accounts.delete_user_session_token(user_token)
+    File.rm(Trarecord.token_path())
 
     if live_socket_id = get_session(conn, :live_socket_id) do
       TrarecordWeb.Endpoint.broadcast(live_socket_id, "disconnect", %{})
@@ -100,12 +103,12 @@ defmodule TrarecordWeb.UserAuth do
     if token = get_session(conn, :user_token) do
       {token, conn}
     else
-      conn = fetch_cookies(conn, signed: [@remember_me_cookie])
+      case File.read(Trarecord.token_path()) do
+        {:ok, token} ->
+          {token, put_token_in_session(conn, Base.decode64!(token))}
 
-      if token = conn.cookies[@remember_me_cookie] do
-        {token, put_token_in_session(conn, token)}
-      else
-        {nil, conn}
+        {:error, :enoent} ->
+          {nil, conn}
       end
     end
   end
