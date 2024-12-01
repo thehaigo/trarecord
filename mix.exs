@@ -43,6 +43,7 @@ defmodule Trarecord.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:pbkdf2_elixir, "~> 2.0"},
       {:desktop, "~> 1.5", only: [:dev, :prod]},
       {:wx, "~> 1.1", hex: :bridge, targets: [:android, :ios]},
       {:plug_crypto, github: "thehaigo/plug_crypto", override: true},
@@ -73,7 +74,8 @@ defmodule Trarecord.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:desktop_setup, github: "thehaigo/desktop_setup", only: :dev}
+      {:desktop_setup, github: "thehaigo/desktop_setup", only: :dev},
+      {:ex_machina, "~> 2.8.0", only: :test}
     ]
   end
 
