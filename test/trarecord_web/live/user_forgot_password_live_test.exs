@@ -2,7 +2,6 @@ defmodule TrarecordWeb.UserForgotPasswordLiveTest do
   use TrarecordWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import Trarecord.AccountsFixtures
 
   alias Trarecord.Accounts
   alias Trarecord.Repo
@@ -19,7 +18,7 @@ defmodule TrarecordWeb.UserForgotPasswordLiveTest do
     test "redirects if already logged in", %{conn: conn} do
       result =
         conn
-        |> log_in_user(user_fixture())
+        |> log_in_user(insert(:user))
         |> live(~p"/users/reset_password")
         |> follow_redirect(conn, ~p"/")
 
@@ -29,7 +28,7 @@ defmodule TrarecordWeb.UserForgotPasswordLiveTest do
 
   describe "Reset link" do
     setup do
-      %{user: user_fixture()}
+      %{user: insert(:user)}
     end
 
     test "sends a new reset password token", %{conn: conn, user: user} do

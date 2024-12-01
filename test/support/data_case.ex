@@ -24,6 +24,7 @@ defmodule Trarecord.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Trarecord.DataCase
+      import Trarecord.Factory
     end
   end
 

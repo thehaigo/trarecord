@@ -2,7 +2,6 @@ defmodule TrarecordWeb.UserLoginLiveTest do
   use TrarecordWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import Trarecord.AccountsFixtures
 
   describe "Log in page" do
     test "renders log in page", %{conn: conn} do
@@ -16,7 +15,7 @@ defmodule TrarecordWeb.UserLoginLiveTest do
     test "redirects if already logged in", %{conn: conn} do
       result =
         conn
-        |> log_in_user(user_fixture())
+        |> log_in_user(insert(:user))
         |> live(~p"/users/log_in")
         |> follow_redirect(conn, "/")
 
@@ -27,7 +26,7 @@ defmodule TrarecordWeb.UserLoginLiveTest do
   describe "user login" do
     test "redirects if user login with valid credentials", %{conn: conn} do
       password = "123456789abcd"
-      user = user_fixture(%{password: password})
+      user = insert(:user, hashed_password: Pbkdf2.hash_pwd_salt(password))
 
       {:ok, lv, _html} = live(conn, ~p"/users/log_in")
 

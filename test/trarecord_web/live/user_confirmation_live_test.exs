@@ -2,13 +2,12 @@ defmodule TrarecordWeb.UserConfirmationLiveTest do
   use TrarecordWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import Trarecord.AccountsFixtures
 
   alias Trarecord.Accounts
   alias Trarecord.Repo
 
   setup do
-    %{user: user_fixture()}
+    %{user: insert(:user)}
   end
 
   describe "Confirm user" do

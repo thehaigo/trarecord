@@ -2,12 +2,11 @@ defmodule TrarecordWeb.UserResetPasswordLiveTest do
   use TrarecordWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import Trarecord.AccountsFixtures
 
   alias Trarecord.Accounts
 
   setup do
-    user = user_fixture()
+    user = insert(:user)
 
     token =
       extract_user_token(fn url ->

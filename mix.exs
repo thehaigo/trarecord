@@ -74,7 +74,8 @@ defmodule Trarecord.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:desktop_setup, github: "thehaigo/desktop_setup", only: :dev}
+      {:desktop_setup, github: "thehaigo/desktop_setup", only: :dev},
+      {:ex_machina, "~> 2.8.0", only: :test}
     ]
   end
 

@@ -28,6 +28,7 @@ defmodule TrarecordWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import TrarecordWeb.ConnCase
+      import Trarecord.Factory
     end
   end
 
@@ -45,7 +46,7 @@ defmodule TrarecordWeb.ConnCase do
   test context.
   """
   def register_and_log_in_user(%{conn: conn}) do
-    user = Trarecord.AccountsFixtures.user_fixture()
+    user = Trarecord.Factory.insert(:user)
     %{conn: log_in_user(conn, user), user: user}
   end
 

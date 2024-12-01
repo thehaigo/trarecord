@@ -1,10 +1,8 @@
 defmodule TrarecordWeb.UserSessionControllerTest do
   use TrarecordWeb.ConnCase, async: true
 
-  import Trarecord.AccountsFixtures
-
   setup do
-    %{user: user_fixture()}
+    %{user: insert(:user)}
   end
 
   describe "POST /users/log_in" do
