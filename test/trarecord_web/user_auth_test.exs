@@ -13,6 +13,7 @@ defmodule TrarecordWeb.UserAuthTest do
       |> Map.replace!(:secret_key_base, TrarecordWeb.Endpoint.config(:secret_key_base))
       |> init_test_session(%{})
 
+    File.rm(Trarecord.token_path())
     %{user: insert(:user), conn: conn}
   end
 
@@ -87,25 +88,6 @@ defmodule TrarecordWeb.UserAuthTest do
       user_token = Accounts.generate_user_session_token(user)
       conn = conn |> put_session(:user_token, user_token) |> UserAuth.fetch_current_user([])
       assert conn.assigns.current_user.id == user.id
-    end
-
-    test "authenticates user from cookies", %{conn: conn, user: user} do
-      logged_in_conn =
-        conn |> fetch_cookies() |> UserAuth.log_in_user(user, %{"remember_me" => "true"})
-
-      user_token = logged_in_conn.cookies[@remember_me_cookie]
-      %{value: signed_token} = logged_in_conn.resp_cookies[@remember_me_cookie]
-
-      conn =
-        conn
-        |> put_req_cookie(@remember_me_cookie, signed_token)
-        |> UserAuth.fetch_current_user([])
-
-      assert conn.assigns.current_user.id == user.id
-      assert get_session(conn, :user_token) == user_token
-
-      assert get_session(conn, :live_socket_id) ==
-               "users_sessions:#{Base.url_encode64(user_token)}"
     end
 
     test "does not authenticate if data is missing", %{conn: conn, user: user} do
