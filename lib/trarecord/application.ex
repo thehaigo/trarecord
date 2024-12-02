@@ -7,6 +7,8 @@ defmodule Trarecord.Application do
 
   @impl true
   def start(_type, _args) do
+    File.mkdir_p!(Trarecord.config_dir())
+
     children = [
       TrarecordWeb.Telemetry,
       Trarecord.Repo,

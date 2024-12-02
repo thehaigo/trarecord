@@ -2,7 +2,14 @@ defmodule Trarecord do
   use Application
 
   def config_dir() do
-    Path.join([Desktop.OS.home(), ".config", "trarecord"])
+    case(Mix.env()) do
+      :test -> "tmp"
+      _ -> Path.join([Desktop.OS.home(), ".config", "trarecord"])
+    end
+  end
+
+  def token_path() do
+    config_dir() <> "/token"
   end
 
   @app Mix.Project.config()[:app]

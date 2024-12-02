@@ -20,7 +20,7 @@ defmodule TrarecordWeb.Router do
   scope "/", TrarecordWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
