@@ -7,6 +7,7 @@ defmodule TrarecordWeb.UserConfirmationInstructionsLiveTest do
   alias Trarecord.Repo
 
   setup do
+    File.rm(Trarecord.token_path())
     %{user: insert(:user)}
   end
 

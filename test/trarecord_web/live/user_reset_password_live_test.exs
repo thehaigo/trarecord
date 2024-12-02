@@ -6,6 +6,7 @@ defmodule TrarecordWeb.UserResetPasswordLiveTest do
   alias Trarecord.Accounts
 
   setup do
+    File.rm(Trarecord.token_path())
     user = insert(:user)
 
     token =
