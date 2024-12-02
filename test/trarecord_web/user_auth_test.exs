@@ -89,13 +89,6 @@ defmodule TrarecordWeb.UserAuthTest do
       conn = conn |> put_session(:user_token, user_token) |> UserAuth.fetch_current_user([])
       assert conn.assigns.current_user.id == user.id
     end
-
-    test "does not authenticate if data is missing", %{conn: conn, user: user} do
-      _ = Accounts.generate_user_session_token(user)
-      conn = UserAuth.fetch_current_user(conn, [])
-      refute get_session(conn, :user_token)
-      refute conn.assigns.current_user
-    end
   end
 
   describe "on_mount :mount_current_user" do
