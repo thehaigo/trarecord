@@ -61,7 +61,7 @@ defmodule TrarecordWeb.UserSessionControllerTest do
           }
         })
 
-      assert redirected_to(conn) == ~p"/"
+      assert redirected_to(conn) == ~p"/onboarding"
       assert Phoenix.Flash.get(conn.assigns.flash, :info) =~ "Account created successfully"
     end
 
