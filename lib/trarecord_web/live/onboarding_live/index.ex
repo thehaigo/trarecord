@@ -18,7 +18,7 @@ defmodule TrarecordWeb.OnboardingLive.Index do
       </div>
     </div>
     <p id="freepik" class="absolute bottom-2 right-4 text-sm">
-      <a href={@page_data.link} class="underline text-blue-600">
+      <a href={@page_data.link} class="underline text-blue-600" target="_blank">
         Image by storyset on Freepik
       </a>
     </p>
