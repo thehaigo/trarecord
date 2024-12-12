@@ -11,7 +11,7 @@ defmodule Trarecord do
         {path, _} =
           Code.eval_string("Path.join([Desktop.OS.home(), dir, app])",
             dir: ".config",
-            app: "nana_phone"
+            app: "trarecord"
           )
 
         path
