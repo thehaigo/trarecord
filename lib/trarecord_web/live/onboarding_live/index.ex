@@ -17,8 +17,14 @@ defmodule TrarecordWeb.OnboardingLive.Index do
         <% end %>
       </div>
     </div>
-    <p id="freepik" class="absolute bottom-2 right-4 text-sm">
-      <a href={@page_data.link} class="underline text-blue-600" target="_blank">
+    <p id="freepik" class="absolute bottom-2 right-4 text-sm" phx-hook="NativeBridge">
+      <a
+        href={@page_data.link}
+        class="underline text-blue-600"
+        target="_blank"
+        phx-click="open_safari"
+        phx-value-url={@page_data.link}
+      >
         Image by storyset on Freepik
       </a>
     </p>
@@ -43,6 +49,12 @@ defmodule TrarecordWeb.OnboardingLive.Index do
 
   def handle_event("finish", _params, socket) do
     {:noreply, push_navigate(socket, to: ~p"/")}
+  end
+
+  def handle_event("open_safari", %{"url" => url}, socket) do
+    socket
+    |> push_event("open_safari", %{url: url})
+    |> then(&{:noreply, &1})
   end
 
   def intro() do
