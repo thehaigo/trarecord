@@ -4,7 +4,7 @@ defmodule Trarecord.Folders.Folder do
 
   schema "folders" do
     field :name, :string
-    field :user_id, :id
+    belongs_to :user, Trarecord.Accounts.User
 
     timestamps(type: :utc_datetime)
   end
@@ -12,7 +12,7 @@ defmodule Trarecord.Folders.Folder do
   @doc false
   def changeset(folder, attrs) do
     folder
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :user_id])
+    |> validate_required([:name, :user_id])
   end
 end
