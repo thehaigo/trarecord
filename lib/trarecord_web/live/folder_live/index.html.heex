@@ -1,0 +1,41 @@
+<.header>
+  Listing Folders
+  <:actions>
+    <.link patch={~p"/folders/new"}>
+      <.button>New Folder</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="folders"
+  rows={@streams.folders}
+  row_click={fn {_id, folder} -> JS.navigate(~p"/folders/#{folder}") end}
+>
+  <:col :let={{_id, folder}} label="Name"><%= folder.name %></:col>
+  <:action :let={{_id, folder}}>
+    <div class="sr-only">
+      <.link navigate={~p"/folders/#{folder}"}>Show</.link>
+    </div>
+    <.link patch={~p"/folders/#{folder}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, folder}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: folder.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="folder-modal" show on_cancel={JS.patch(~p"/folders")}>
+  <.live_component
+    module={TrarecordWeb.FolderLive.FormComponent}
+    id={@folder.id || :new}
+    title={@page_title}
+    action={@live_action}
+    folder={@folder}
+    patch={~p"/folders"}
+  />
+</.modal>

@@ -69,6 +69,13 @@ defmodule TrarecordWeb.Router do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
       live "/onboarding", OnboardingLive.Index, :index
+
+      live "/folders", FolderLive.Index, :index
+      live "/folders/new", FolderLive.Index, :new
+      live "/folders/:id/edit", FolderLive.Index, :edit
+
+      live "/folders/:id", FolderLive.Show, :show
+      live "/folders/:id/show/edit", FolderLive.Show, :edit
     end
   end
 
