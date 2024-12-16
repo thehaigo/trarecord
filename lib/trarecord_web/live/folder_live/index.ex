@@ -6,7 +6,8 @@ defmodule TrarecordWeb.FolderLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :folders, Folders.list_folders())}
+    user = socket.assigns.current_user
+    {:ok, stream(socket, :folders, Folders.list_folders(user.id))}
   end
 
   @impl true

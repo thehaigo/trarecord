@@ -21,6 +21,12 @@ defmodule Trarecord.Folders do
     Repo.all(Folder)
   end
 
+  def list_folders(user_id) do
+    Folder
+    |> where([f], f.user_id == ^user_id)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single folder.
 
