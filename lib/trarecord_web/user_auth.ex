@@ -105,7 +105,8 @@ defmodule TrarecordWeb.UserAuth do
     else
       case File.read(Trarecord.token_path()) do
         {:ok, token} ->
-          {token, put_token_in_session(conn, Base.decode64!(token))}
+          token = Base.decode64!(token)
+          {token, put_token_in_session(conn, token)}
 
         {:error, :enoent} ->
           {nil, conn}
