@@ -6,22 +6,23 @@ defmodule Trarecord.FoldersTest do
   describe "folders" do
     alias Trarecord.Folders.Folder
 
-    import Trarecord.FoldersFixtures
-
     @invalid_attrs %{name: nil}
 
     test "list_folders/0 returns all folders" do
-      folder = folder_fixture()
-      assert Folders.list_folders() == [folder]
+      %{id: id} = insert(:folder)
+
+      assert [%{id: ^id}] = Folders.list_folders()
     end
 
     test "get_folder!/1 returns the folder with given id" do
-      folder = folder_fixture()
-      assert Folders.get_folder!(folder.id) == folder
+      %{id: id} = insert(:folder)
+
+      assert %{id: ^id} = Folders.get_folder!(id)
     end
 
     test "create_folder/1 with valid data creates a folder" do
-      valid_attrs = %{name: "some name"}
+      user = insert(:user)
+      valid_attrs = %{name: "some name", user_id: user.id}
 
       assert {:ok, %Folder{} = folder} = Folders.create_folder(valid_attrs)
       assert folder.name == "some name"
@@ -32,7 +33,7 @@ defmodule Trarecord.FoldersTest do
     end
 
     test "update_folder/2 with valid data updates the folder" do
-      folder = folder_fixture()
+      folder = insert(:folder)
       update_attrs = %{name: "some updated name"}
 
       assert {:ok, %Folder{} = folder} = Folders.update_folder(folder, update_attrs)
@@ -40,19 +41,19 @@ defmodule Trarecord.FoldersTest do
     end
 
     test "update_folder/2 with invalid data returns error changeset" do
-      folder = folder_fixture()
+      %{updated_at: update} = folder = insert(:folder)
       assert {:error, %Ecto.Changeset{}} = Folders.update_folder(folder, @invalid_attrs)
-      assert folder == Folders.get_folder!(folder.id)
+      assert %{updated_at: ^update} = Folders.get_folder!(folder.id)
     end
 
     test "delete_folder/1 deletes the folder" do
-      folder = folder_fixture()
+      folder = insert(:folder)
       assert {:ok, %Folder{}} = Folders.delete_folder(folder)
       assert_raise Ecto.NoResultsError, fn -> Folders.get_folder!(folder.id) end
     end
 
     test "change_folder/1 returns a folder changeset" do
-      folder = folder_fixture()
+      folder = insert(:folder)
       assert %Ecto.Changeset{} = Folders.change_folder(folder)
     end
   end

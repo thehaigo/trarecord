@@ -2,14 +2,15 @@ defmodule TrarecordWeb.FolderLiveTest do
   use TrarecordWeb.ConnCase
 
   import Phoenix.LiveViewTest
-  import Trarecord.FoldersFixtures
 
   @create_attrs %{name: "some name"}
   @update_attrs %{name: "some updated name"}
   @invalid_attrs %{name: nil}
 
-  defp create_folder(_) do
-    folder = folder_fixture()
+  setup :register_and_log_in_user
+
+  defp create_folder(%{user: user}) do
+    folder = insert(:folder, user: user)
     %{folder: folder}
   end
 
