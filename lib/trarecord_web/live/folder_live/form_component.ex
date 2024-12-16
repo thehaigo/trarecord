@@ -64,6 +64,8 @@ defmodule TrarecordWeb.FolderLive.FormComponent do
   end
 
   defp save_folder(socket, :new, folder_params) do
+    folder_params = Map.put(folder_params, "user_id", socket.assigns.user_id)
+
     case Folders.create_folder(folder_params) do
       {:ok, folder} ->
         notify_parent({:saved, folder})
