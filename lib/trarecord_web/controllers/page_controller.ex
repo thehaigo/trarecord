@@ -7,7 +7,7 @@ defmodule TrarecordWeb.PageController do
   end
 
   defp redirect_to(conn, %User{}) do
-    redirect(conn, to: ~p"/users/settings")
+    redirect(conn, to: ~p"/folders")
   end
 
   defp redirect_to(conn, nil) do

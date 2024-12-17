@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,10 +11,10 @@
 		29EF700FAB72D347747AFD6D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC6700BE54D73BB2C36B7E /* ContentView.swift */; };
 		2A55C5ADD2C8AF91C0D4F47E /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7651DA92F0D9D2B1659BBFA4 /* Bridge.swift */; };
 		8763D32F38B878DC5340B424 /* ZIPFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A56A50242BBA32AD6F3578 /* ZIPFoundation.xcframework */; };
-		968CACD1C7516D598B9920CB /* app.zip in Resources */ = {isa = PBXBuildFile; fileRef = 01F39AFF7C72F322880FA2A0 /* app.zip */; };
 		99D979473CDC5C1EEF949EEB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0F31C6F0875F0A137DCC /* WebViewController.swift */; };
 		A7BE70A39D44D84E64E91A3F /* ZIPFoundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7A56A50242BBA32AD6F3578 /* ZIPFoundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0E9FFE0FA50C409E7DB38D7 /* Trarecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6287A50BF2C836B9E2FB240 /* Trarecord.swift */; };
+		C0CD4C742D0DFC490035647C /* app.zip in Resources */ = {isa = PBXBuildFile; fileRef = 01F39AFF7C72F322880FA2A0 /* app.zip */; };
 		C5B03794AB0E957E25CB51CB /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E94974041ADD1C62BC3BBA /* WebView.swift */; };
 		C9AFF926A79B617AAF718809 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FAE37A1CAD594B2709B3EF5 /* Preview Assets.xcassets */; };
 		CE20236E48DBDFAD503EE59C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18944AF3B5BF34D7E2B761AD /* Assets.xcassets */; };
@@ -125,10 +125,10 @@
 			buildConfigurationList = D963FFE4FA68FCFC2128C484 /* Build configuration list for PBXNativeTarget "Trarecord" */;
 			buildPhases = (
 				281599ACA7478CE0DCCD0F06 /* Sources */,
+				8EF71C220DD52D9D499AA630 /* build elixir */,
 				305809282FF2214074F73916 /* Resources */,
 				2E8801F0D2BB60F2CB4D1B3C /* Frameworks */,
 				BEA03721CA0D20875835993B /* Embed Frameworks */,
-				8EF71C220DD52D9D499AA630 /* build elixir */,
 			);
 			buildRules = (
 			);
@@ -147,8 +147,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 0873F351DE2BDB8885F2BDAF /* Build configuration list for PBXProject "Trarecord" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -172,9 +170,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0CD4C742D0DFC490035647C /* app.zip in Resources */,
 				CE20236E48DBDFAD503EE59C /* Assets.xcassets in Resources */,
 				C9AFF926A79B617AAF718809 /* Preview Assets.xcassets in Resources */,
-				968CACD1C7516D598B9920CB /* app.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +196,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -e\n\n./run_mix";
+			shellScript = "#!/bin/bash\nset -e\n\n./run_mix\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
