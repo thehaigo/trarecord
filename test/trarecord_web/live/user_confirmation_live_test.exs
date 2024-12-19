@@ -18,6 +18,8 @@ defmodule TrarecordWeb.UserConfirmationLiveTest do
     end
 
     test "confirms the given token once", %{conn: conn, user: user} do
+      File.rm(Trarecord.token_path())
+
       token =
         extract_user_token(fn url ->
           Accounts.deliver_user_confirmation_instructions(user, url)

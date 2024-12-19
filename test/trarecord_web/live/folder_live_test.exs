@@ -27,7 +27,7 @@ defmodule TrarecordWeb.FolderLiveTest do
     test "saves new folder", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, ~p"/folders")
 
-      assert index_live |> element("a", "New Folder") |> render_click() =~
+      assert index_live |> element("#add") |> render_click() =~
                "New Folder"
 
       assert_patch(index_live, ~p"/folders/new")

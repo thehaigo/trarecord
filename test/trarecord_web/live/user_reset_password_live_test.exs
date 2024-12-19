@@ -50,6 +50,7 @@ defmodule TrarecordWeb.UserResetPasswordLiveTest do
 
   describe "Reset Password" do
     test "resets password once", %{conn: conn, token: token, user: user} do
+      File.rm(Trarecord.token_path())
       {:ok, lv, _html} = live(conn, ~p"/users/reset_password/#{token}")
 
       {:ok, conn} =
@@ -97,7 +98,7 @@ defmodule TrarecordWeb.UserResetPasswordLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/users/log_in")
 
-      assert conn.resp_body =~ "Log in"
+      assert conn.resp_body =~ "Sign In"
     end
 
     test "redirects to registration page when the Register button is clicked", %{
@@ -112,7 +113,7 @@ defmodule TrarecordWeb.UserResetPasswordLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
-      assert conn.resp_body =~ "Register"
+      assert conn.resp_body =~ "Sign Up"
     end
   end
 end
