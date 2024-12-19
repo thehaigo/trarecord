@@ -6,16 +6,9 @@ defmodule TrarecordWeb.UserRegistrationLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <div id="register" class="mx-auto pt-12 h-screen w-[80vw]">
       <.header class="text-center">
-        Register for an account
-        <:subtitle>
-          Already registered?
-          <.link navigate={~p"/users/log_in"} class="font-semibold text-brand hover:underline">
-            Log in
-          </.link>
-          to your account now.
-        </:subtitle>
+        Sign Up
       </.header>
 
       <.simple_form
@@ -27,15 +20,21 @@ defmodule TrarecordWeb.UserRegistrationLive do
         action={~p"/users/log_in?_action=registered"}
         method="post"
       >
-        <.error :if={@check_errors}>
-          Oops, something went wrong! Please check the errors below.
-        </.error>
-
         <.input field={@form[:email]} type="email" label="Email" required />
         <.input field={@form[:password]} type="password" label="Password" required />
+        <:actions>
+          <.link id="signin" navigate={~p"/users/log_in"} class="font-semibold text-sm underline">
+            Sign in here
+          </.link>
+        </:actions>
 
         <:actions>
-          <.button phx-disable-with="Creating account..." class="w-full">Create an account</.button>
+          <.button
+            phx-disable-with="Creating account..."
+            class="w-full h-12 disabled:bg-gray-400 disabled:border-gray-400"
+          >
+            Sign Up
+          </.button>
         </:actions>
       </.simple_form>
     </div>
