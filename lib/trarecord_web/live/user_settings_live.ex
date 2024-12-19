@@ -5,12 +5,9 @@ defmodule TrarecordWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <.header class="text-center">
-      Account Settings
-      <:subtitle>Manage your account email address and password settings</:subtitle>
-    </.header>
+    <.header_nav title="Setting" />
 
-    <div class="space-y-12 divide-y">
+    <div class="space-y-12 divide-y mt-12 p-4">
       <div>
         <.simple_form
           for={@email_form}
@@ -70,6 +67,8 @@ defmodule TrarecordWeb.UserSettingsLive do
         </.simple_form>
       </div>
     </div>
+
+    <.bottom_tab current="Setting" />
     """
   end
 

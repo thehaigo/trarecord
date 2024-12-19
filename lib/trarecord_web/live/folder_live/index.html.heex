@@ -1,33 +1,36 @@
-<.header>
-  Listing Folders
+<.header_nav title="Folder">
   <:actions>
     <.link patch={~p"/folders/new"}>
-      <.button>New Folder</.button>
+      <.icon name="hero-plus-solid" class="mr-4 h-8 w-8" />
     </.link>
   </:actions>
-</.header>
+</.header_nav>
 
-<.table
-  id="folders"
-  rows={@streams.folders}
-  row_click={fn {_id, folder} -> JS.navigate(~p"/folders/#{folder}") end}
->
-  <:col :let={{_id, folder}} label="Name"><%= folder.name %></:col>
-  <:action :let={{_id, folder}}>
-    <div class="sr-only">
-      <.link navigate={~p"/folders/#{folder}"}>Show</.link>
-    </div>
-    <.link patch={~p"/folders/#{folder}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={{id, folder}}>
-    <.link
-      phx-click={JS.push("delete", value: %{id: folder.id}) |> hide("##{id}")}
-      data-confirm="Are you sure?"
-    >
-      Delete
-    </.link>
-  </:action>
-</.table>
+<div class="mt-12">
+  <.table
+    id="folders"
+    rows={@streams.folders}
+    row_click={fn {_id, folder} -> JS.navigate(~p"/folders/#{folder}") end}
+  >
+    <:col :let={{_id, folder}} label="Name"><%= folder.name %></:col>
+    <:action :let={{_id, folder}}>
+      <div class="sr-only">
+        <.link navigate={~p"/folders/#{folder}"}>Show</.link>
+      </div>
+      <.link patch={~p"/folders/#{folder}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={{id, folder}}>
+      <.link
+        phx-click={JS.push("delete", value: %{id: folder.id}) |> hide("##{id}")}
+        data-confirm="Are you sure?"
+      >
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</div>
+
+<.bottom_tab current="Folder" />
 
 <.modal
   :if={@live_action in [:new, :edit]}
