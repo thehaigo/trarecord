@@ -1,0 +1,26 @@
+<.header>
+  Folder <%= @folder.id %>
+  <:subtitle>This is a folder record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/folders/#{@folder}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit folder</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @folder.name %></:item>
+</.list>
+
+<.back navigate={~p"/folders"}>Back to folders</.back>
+
+<.modal :if={@live_action == :edit} id="folder-modal" show on_cancel={JS.patch(~p"/folders/#{@folder}")}>
+  <.live_component
+    module={TrarecordWeb.FolderLive.FormComponent}
+    id={@folder.id}
+    title={@page_title}
+    action={@live_action}
+    folder={@folder}
+    patch={~p"/folders/#{@folder}"}
+  />
+</.modal>

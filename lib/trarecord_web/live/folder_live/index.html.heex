@@ -1,0 +1,62 @@
+<.header_nav title="Folder">
+  <:actions>
+    <.link id="add" patch={~p"/folders/new"}>
+      <.icon name="hero-plus-solid" class="mr-4 h-8 w-8" />
+    </.link>
+  </:actions>
+</.header_nav>
+
+<div id="folders" class="mt-16" phx-update="stream">
+  <%= for {id, folder} <- @streams.folders do %>
+    <div id={id} class="card bg-base-200 m-4 shadow-xl">
+      <.link navigate={~p"/folders/#{folder}"}>
+        <div class="card-body p-4">
+          <h2 class="card-title"><%= folder.name %></h2>
+          <div class="card-actions justify-end">
+            <.link patch={~p"/folders/#{folder}/edit"}>Edit</.link>
+            <.link patch={~p"/folders/#{folder}/delete"}>Delete</.link>
+          </div>
+        </div>
+      </.link>
+    </div>
+  <% end %>
+</div>
+
+<.bottom_tab current="Folder" />
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="folder-modal"
+  show
+  on_cancel={JS.patch(~p"/folders")}
+>
+  <.live_component
+    module={TrarecordWeb.FolderLive.FormComponent}
+    id={@folder.id || :new}
+    title={@page_title}
+    action={@live_action}
+    folder={@folder}
+    user_id={@current_user.id}
+    patch={~p"/folders"}
+  />
+</.modal>
+
+<.modal
+  :if={@live_action in [:delete]}
+  id="folder-delete-modal"
+  show
+  on_cancel={JS.navigate(~p"/folders")}
+>
+  <p class="m-4">Are you sure?</p>
+  <div class="flex justify-between mx-4 gap-x-4">
+    <button class="btn w-28" phx-click={JS.navigate(~p"/folders")}>
+      Cancel
+    </button>
+    <button
+      class="btn btn-error text-white w-28"
+      phx-click={JS.push("delete", value: %{id: @folder.id})}
+    >
+      Delete
+    </button>
+  </div>
+</.modal>

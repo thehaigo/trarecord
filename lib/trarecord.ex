@@ -1,10 +1,20 @@
 defmodule Trarecord do
   use Application
 
+  @env Mix.env()
   def config_dir() do
-    case(Mix.env()) do
-      :test -> "tmp"
-      _ -> Path.join([Desktop.OS.home(), ".config", "trarecord"])
+    case(@env) do
+      :test ->
+        "tmp"
+
+      _ ->
+        {path, _} =
+          Code.eval_string("Path.join([Desktop.OS.home(), dir, app])",
+            dir: ".config",
+            app: "trarecord"
+          )
+
+        path
     end
   end
 

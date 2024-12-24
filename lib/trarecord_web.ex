@@ -85,6 +85,7 @@ defmodule TrarecordWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import TrarecordWeb.CoreComponents
+      import TrarecordWeb.Navigation
       use Gettext, backend: TrarecordWeb.Gettext
 
       # Shortcut for generating JS commands
