@@ -33,9 +33,15 @@ defmodule TrarecordWeb.FolderLive.Index do
     |> assign(:folder, nil)
   end
 
+  defp apply_action(socket, :delete, %{"id" => id}) do
+    socket
+    |> assign(:page_title, "Delete Folder")
+    |> assign(:folder, Folders.get_folder!(id))
+  end
+
   @impl true
   def handle_info({TrarecordWeb.FolderLive.FormComponent, {:saved, folder}}, socket) do
-    {:noreply, stream_insert(socket, :folders, folder)}
+    {:noreply, stream_insert(socket, :folders, folder, at: -1)}
   end
 
   @impl true
@@ -43,6 +49,10 @@ defmodule TrarecordWeb.FolderLive.Index do
     folder = Folders.get_folder!(id)
     {:ok, _} = Folders.delete_folder(folder)
 
-    {:noreply, stream_delete(socket, :folders, folder)}
+    socket
+    |> put_flash(:info, "Folder deleted successfully")
+    |> push_patch(to: ~p"/folders")
+    |> stream_delete(:folders, folder)
+    |> then(&{:noreply, &1})
   end
 end

@@ -73,6 +73,7 @@ defmodule TrarecordWeb.Router do
       live "/folders", FolderLive.Index, :index
       live "/folders/new", FolderLive.Index, :new
       live "/folders/:id/edit", FolderLive.Index, :edit
+      live "/folders/:id/delete", FolderLive.Index, :delete
 
       live "/folders/:id", FolderLive.Show, :show
       live "/folders/:id/show/edit", FolderLive.Show, :edit
