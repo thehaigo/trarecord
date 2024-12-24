@@ -8,8 +8,8 @@
 
 <div id="folders" class="mt-16" phx-update="stream">
   <%= for {id, folder} <- @streams.folders do %>
-    <.link navigate={~p"/folders/#{folder}"}>
-      <div id={id} class="card bg-base-200 m-4 shadow-xl">
+    <div id={id} class="card bg-base-200 m-4 shadow-xl">
+      <.link navigate={~p"/folders/#{folder}"}>
         <div class="card-body p-4">
           <h2 class="card-title"><%= folder.name %></h2>
           <div class="card-actions justify-end">
@@ -17,8 +17,8 @@
             <.link patch={~p"/folders/#{folder}/delete"}>Delete</.link>
           </div>
         </div>
-      </div>
-    </.link>
+      </.link>
+    </div>
   <% end %>
 </div>
 
