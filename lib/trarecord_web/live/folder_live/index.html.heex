@@ -6,28 +6,20 @@
   </:actions>
 </.header_nav>
 
-<div class="mt-12">
-  <.table
-    id="folders"
-    rows={@streams.folders}
-    row_click={fn {_id, folder} -> JS.navigate(~p"/folders/#{folder}") end}
-  >
-    <:col :let={{_id, folder}} label="Name"><%= folder.name %></:col>
-    <:action :let={{_id, folder}}>
-      <div class="sr-only">
-        <.link navigate={~p"/folders/#{folder}"}>Show</.link>
+<div id="folders" class="mt-16" phx-update="stream">
+  <%= for {id, folder} <- @streams.folders do %>
+    <.link navigate={~p"/folders/#{folder}"}>
+      <div id={id} class="card bg-base-200 m-4 shadow-xl">
+        <div class="card-body p-4">
+          <h2 class="card-title"><%= folder.name %></h2>
+          <div class="card-actions justify-end">
+            <.link patch={~p"/folders/#{folder}/edit"}>Edit</.link>
+            <.link patch={~p"/folders/#{folder}/delete"}>Delete</.link>
+          </div>
+        </div>
       </div>
-      <.link patch={~p"/folders/#{folder}/edit"}>Edit</.link>
-    </:action>
-    <:action :let={{id, folder}}>
-      <.link
-        phx-click={JS.push("delete", value: %{id: folder.id}) |> hide("##{id}")}
-        data-confirm="Are you sure?"
-      >
-        Delete
-      </.link>
-    </:action>
-  </.table>
+    </.link>
+  <% end %>
 </div>
 
 <.bottom_tab current="Folder" />
@@ -47,4 +39,24 @@
     user_id={@current_user.id}
     patch={~p"/folders"}
   />
+</.modal>
+
+<.modal
+  :if={@live_action in [:delete]}
+  id="folder-delete-modal"
+  show
+  on_cancel={JS.navigate(~p"/folders")}
+>
+  <p class="m-4">Are you sure?</p>
+  <div class="flex justify-between mx-4 gap-x-4">
+    <button class="btn w-28" phx-click={JS.navigate(~p"/folders")}>
+      Cancel
+    </button>
+    <button
+      class="btn btn-error text-white w-28"
+      phx-click={JS.push("delete", value: %{id: @folder.id})}
+    >
+      Delete
+    </button>
+  </div>
 </.modal>
