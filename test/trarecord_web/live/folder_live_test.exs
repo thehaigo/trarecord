@@ -50,7 +50,9 @@ defmodule TrarecordWeb.FolderLiveTest do
     test "updates folder in listing", %{conn: conn, folder: folder} do
       {:ok, index_live, _html} = live(conn, ~p"/folders")
 
-      assert index_live |> element("#folders-#{folder.id} a", "Edit") |> render_click() =~
+      assert index_live
+             |> element("#folders-#{folder.id} .card-actions a", "Edit")
+             |> render_click() =~
                "Edit Folder"
 
       assert_patch(index_live, ~p"/folders/#{folder}/edit")
@@ -73,7 +75,17 @@ defmodule TrarecordWeb.FolderLiveTest do
     test "deletes folder in listing", %{conn: conn, folder: folder} do
       {:ok, index_live, _html} = live(conn, ~p"/folders")
 
-      assert index_live |> element("#folders-#{folder.id} a", "Delete") |> render_click()
+      assert index_live
+             |> element("#folders-#{folder.id} .card-actions a", "Delete")
+             |> render_click() =~
+               "Are you sure?"
+
+      assert_patch(index_live, ~p"/folders/#{folder.id}/delete")
+
+      assert index_live
+             |> element("#folder-delete-modal button", "Delete")
+             |> render_click()
+
       refute has_element?(index_live, "#folders-#{folder.id}")
     end
   end
