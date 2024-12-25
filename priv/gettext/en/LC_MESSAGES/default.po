@@ -51,3 +51,131 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "close"
 msgstr ""
+
+# Account
+msgid "Sign Up"
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+# Account
+msgid "Account created successfully!"
+msgstr ""
+
+msgid "Password updated successfully!"
+msgstr ""
+
+msgid "welcome back!"
+msgstr ""
+
+msgid "Invalid email or password"
+msgstr ""
+
+msgid "Logged out successfully."
+msgstr ""
+
+msgid "Email changed successfully."
+msgstr ""
+
+msgid "Creating account..."
+msgstr ""
+
+msgid "Signing in..."
+msgstr ""
+
+msgid "Sign up here"
+msgstr ""
+
+msgid "Sign in here"
+msgstr ""
+
+msgid "Forgot your password?"
+msgstr ""
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Change Email"
+msgstr ""
+
+msgid "Change Password"
+msgstr ""
+
+# Onboarding
+msgid "Let's gather where we want to go."
+msgstr ""
+
+msgid "You can register <br />various spots using Google search."
+msgstr ""
+
+msgid "Let's organize them in folders."
+msgstr ""
+
+msgid "If you have more spots, divide them into <br />folders for easier management."
+msgstr ""
+
+msgid "Record your travel."
+msgstr ""
+
+msgid "You can record your travel of actually visiting the spot<br />with GPS logging and Checkin."
+msgstr ""
+
+# General
+msgid "Email"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Are you sure?"
+msgstr ""
+
+# Folder
+msgid "Folder"
+msgstr ""
+
+msgid "Folder Name"
+msgstr ""
+
+msgid "Edit Folder"
+msgstr ""
+
+msgid "New Folder"
+msgstr ""
+
+msgid "Delete Folder"
+msgstr ""
+
+msgid "Folder updated successfully"
+msgstr ""
+
+msgid "Folder created successfully"
+msgstr ""
+
+msgid "Folder deleted successfully"
+msgstr ""

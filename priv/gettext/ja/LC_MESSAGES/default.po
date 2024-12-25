@@ -19,7 +19,7 @@ msgstr ""
 #: lib/trarecord_web/components/core_components.ex:160
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
-msgstr ""
+msgstr "再接続中"
 
 #: lib/trarecord_web/components/core_components.ex:151
 #, elixir-autogen, elixir-format
@@ -34,7 +34,7 @@ msgstr ""
 #: lib/trarecord_web/components/core_components.ex:167
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
-msgstr ""
+msgstr "問題が発生しました"
 
 #: lib/trarecord_web/components/core_components.ex:150
 #, elixir-autogen, elixir-format
@@ -44,10 +44,137 @@ msgstr ""
 #: lib/trarecord_web/components/core_components.ex:155
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
-msgstr ""
+msgstr "インターネットに接続できません"
 
 #: lib/trarecord_web/components/core_components.ex:76
 #: lib/trarecord_web/components/core_components.ex:130
 #, elixir-autogen, elixir-format
 msgid "close"
 msgstr ""
+
+# Account
+msgid "Sign In"
+msgstr "ログイン"
+
+msgid "Sign Up"
+msgstr "ユーザー登録"
+
+msgid "Account created successfully!"
+msgstr "アカウントを作成しました"
+
+msgid "Password updated successfully!"
+msgstr "パスワードを変更しました"
+
+msgid "welcome back!"
+msgstr "ログインしました"
+
+msgid "Invalid email or password"
+msgstr "Emailまたはパスワードに誤りがあります"
+
+msgid "Logged out successfully."
+msgstr "ログアウトしました"
+
+msgid "Email changed successfully."
+msgstr "メールアドレスを変更しました"
+
+msgid "Creating account..."
+msgstr "作成中..."
+
+msgid "Signing in..."
+msgstr "ログイン中..."
+
+msgid "Sign up here"
+msgstr "ユーザー登録はこちら"
+
+msgid "Sign in here"
+msgstr "ログインはこちら"
+
+msgid "Forgot your password?"
+msgstr "パスワードを忘れた方はこちら"
+
+msgid "Current password"
+msgstr "現在のパスワード"
+
+msgid "New password"
+msgstr "新しいパスワード"
+
+msgid "Confirm new password"
+msgstr "新しいパスワード(確認)"
+
+msgid "Change Email"
+msgstr "メールアドレス変更"
+
+msgid "Change Password"
+msgstr "パスワード変更"
+
+# Onboarding
+msgid "Let's gather where we want to go."
+msgstr "行きたい場所を集めよう"
+
+msgid "You can register <br />various spots using Google search."
+msgstr "Google検索を使用して<br />様々なスポットを登録できます"
+
+msgid "Let's organize them in folders."
+msgstr "フォルダに分けて整理しよう"
+
+msgid "If you have more spots, divide them into <br />folders for easier management."
+msgstr "スポットが増えてきたら<br />フォルダに分けて管理しやすくします"
+
+msgid "Record your travel."
+msgstr "旅を記録しよう"
+
+msgid "You can record your travel of actually visiting the spot<br />with GPS logging and Checkin."
+msgstr "実際に行ったスポットを<br />GPSログや、チェックインで記録できます"
+
+# General
+msgid "Email"
+msgstr "メールアドレス"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Saving..."
+msgstr "保存中..."
+
+msgid "Edit"
+msgstr "編集"
+
+msgid "Delete"
+msgstr "削除"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Back"
+msgstr "戻る"
+
+msgid "Are you sure?"
+msgstr "削除しますか？"
+
+# Folder
+msgid "Folder"
+msgstr "フォルダ"
+
+msgid "Folder Name"
+msgstr "フォルダ名"
+
+msgid "Edit Folder"
+msgstr "フォルダ編集"
+
+msgid "New Folder"
+msgstr "フォルダ作成"
+
+msgid "Delete Folder"
+msgstr "フォルダ削除"
+
+msgid "Folder updated successfully"
+msgstr "フォルダを更新しました"
+
+msgid "Folder created successfully"
+msgstr "フォルダを作成しました"
+
+msgid "Folder deleted successfully"
+msgstr "フォルダを削除しました"
