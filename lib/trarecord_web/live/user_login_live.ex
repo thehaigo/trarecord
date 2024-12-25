@@ -5,7 +5,7 @@ defmodule TrarecordWeb.UserLoginLive do
     ~H"""
     <div id="login" class="m-auto pt-12 h-screen w-[80vw]">
       <.header class="text-center">
-        Sign In
+        <%= gettext("Sign In") %>
       </.header>
 
       <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
@@ -20,7 +20,7 @@ defmodule TrarecordWeb.UserLoginLive do
                 href={~p"/users/reset_password"}
                 class="text-sm font-semibold underline"
               >
-                Forgot your password?
+                <%= gettext("Forgot your password?") %>
               </.link>
             </li>
             <li>
@@ -29,14 +29,14 @@ defmodule TrarecordWeb.UserLoginLive do
                 navigate={~p"/users/register"}
                 class="font-semibold text-sm underline"
               >
-                Sign up here
+                <%= gettext("Sign up here") %>
               </.link>
             </li>
           </ul>
         </:actions>
         <:actions>
-          <.button phx-disable-with="Signing in..." class="w-full">
-            Sign In
+          <.button phx-disable-with={gettext("Signing in...")} class="w-full">
+            <%= gettext("Sign In") %>
           </.button>
         </:actions>
       </.simple_form>
