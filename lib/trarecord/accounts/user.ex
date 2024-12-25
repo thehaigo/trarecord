@@ -1,6 +1,7 @@
 defmodule Trarecord.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  use Gettext, backend: TrarecordWeb.Gettext
 
   schema "users" do
     field :email, :string
@@ -47,7 +48,9 @@ defmodule Trarecord.Accounts.User do
   defp validate_email(changeset, opts) do
     changeset
     |> validate_required([:email])
-    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/,
+      message: gettext("must have the @ sign and no spaces")
+    )
     |> validate_length(:email, max: 160)
     |> maybe_validate_unique_email(opts)
   end
@@ -101,7 +104,7 @@ defmodule Trarecord.Accounts.User do
     |> validate_email(opts)
     |> case do
       %{changes: %{email: _}} = changeset -> changeset
-      %{} = changeset -> add_error(changeset, :email, "did not change")
+      %{} = changeset -> add_error(changeset, :email, gettext("did not change"))
     end
   end
 
@@ -120,7 +123,7 @@ defmodule Trarecord.Accounts.User do
   def password_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:password])
-    |> validate_confirmation(:password, message: "does not match password")
+    |> validate_confirmation(:password, message: gettext("does not match password"))
     |> validate_password(opts)
   end
 
@@ -157,7 +160,7 @@ defmodule Trarecord.Accounts.User do
     if valid_password?(changeset.data, password) do
       changeset
     else
-      add_error(changeset, :current_password, "is not valid")
+      add_error(changeset, :current_password, gettext("is invalid"))
     end
   end
 end

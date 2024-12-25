@@ -61,8 +61,8 @@ defmodule TrarecordWeb.OnboardingLive.Index do
     [
       %{
         page: 1,
-        title: "Let's gather where we want to go.",
-        text: "You can register <br />various spots using Google search.",
+        title: gettext("Let's gather where we want to go."),
+        text: gettext("You can register <br />various spots using Google search."),
         link:
           "https://www.freepik.com/free-vector/flying-around-world-with-airplane-concept-illustration_8426450.htm#fromView=author&page=1&position=12&uuid=dbcac267-0605-4076-ae43-111dfb07a118",
         image: "/images/flying-around-world.svg",
@@ -70,8 +70,9 @@ defmodule TrarecordWeb.OnboardingLive.Index do
       },
       %{
         page: 2,
-        title: "Let's organize them in folders.",
-        text: "If you have more spots, divide them into <br />folders for easier management.",
+        title: gettext("Let's organize them in folders."),
+        text:
+          gettext("If you have more spots, divide them into <br />folders for easier management."),
         link:
           "https://www.freepik.com/free-vector/resume-folder-concept-illustration_5358953.htm#fromView=author&page=1&position=6&uuid=31a01ff6-d2cb-4798-bc51-89a0517d7ad9",
         image: "/images/folder.svg",
@@ -79,9 +80,11 @@ defmodule TrarecordWeb.OnboardingLive.Index do
       },
       %{
         page: 3,
-        title: "Record your travel.",
+        title: gettext("Record your travel."),
         text:
-          "You can record your memories of actually visiting the spot<br />with GPS logging and Checkin.",
+          gettext(
+            "You can record your memories of actually visiting the spot<br />with GPS logging and Checkin."
+          ),
         link:
           "https://www.freepik.com/free-vector/post-concept-illustration_5928515.htm#fromView=author&page=1&position=2&uuid=1450568b-5aac-4d60-a3ad-bef059625d94",
         image: "/images/post.svg",

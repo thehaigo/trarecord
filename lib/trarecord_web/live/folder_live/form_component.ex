@@ -9,7 +9,6 @@ defmodule TrarecordWeb.FolderLive.FormComponent do
     <div>
       <.header>
         <%= @title %>
-        <:subtitle>Use this form to manage folder records in your database.</:subtitle>
       </.header>
 
       <.simple_form
@@ -19,9 +18,9 @@ defmodule TrarecordWeb.FolderLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:name]} type="text" label="Name" />
+        <.input field={@form[:name]} type="text" label={gettext("Folder Name")} />
         <:actions>
-          <.button phx-disable-with="Saving...">Save Folder</.button>
+          <.button phx-disable-with={gettext("Saving...")}><%= gettext("Save") %></.button>
         </:actions>
       </.simple_form>
     </div>

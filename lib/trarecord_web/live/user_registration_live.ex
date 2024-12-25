@@ -8,7 +8,7 @@ defmodule TrarecordWeb.UserRegistrationLive do
     ~H"""
     <div id="register" class="mx-auto pt-12 h-screen w-[80vw]">
       <.header class="text-center">
-        Sign Up
+        <%= gettext("Sign Up") %>
       </.header>
 
       <.simple_form
@@ -24,16 +24,16 @@ defmodule TrarecordWeb.UserRegistrationLive do
         <.input field={@form[:password]} type="password" label="Password" required />
         <:actions>
           <.link id="signin" navigate={~p"/users/log_in"} class="font-semibold text-sm underline">
-            Sign in here
+            <%= gettext("Sign in here") %>
           </.link>
         </:actions>
 
         <:actions>
           <.button
-            phx-disable-with="Creating account..."
+            phx-disable-with={gettext("Creating account...")}
             class="w-full h-12 disabled:bg-gray-400 disabled:border-gray-400"
           >
-            Sign Up
+            <%= gettext("Sign Up") %>
           </.button>
         </:actions>
       </.simple_form>

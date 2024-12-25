@@ -5,9 +5,9 @@ defmodule TrarecordWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <.header_nav title="Setting" />
+    <.header_nav title={gettext("Setting")} />
 
-    <div class="space-y-12 divide-y mt-12 p-4">
+    <div class="space-y-12 divide-y my-12 p-4">
       <div>
         <.simple_form
           for={@email_form}
@@ -21,12 +21,12 @@ defmodule TrarecordWeb.UserSettingsLive do
             name="current_password"
             id="current_password_for_email"
             type="password"
-            label="Current password"
+            label={gettext("Current password")}
             value={@email_form_current_password}
             required
           />
           <:actions>
-            <.button phx-disable-with="Changing...">Change Email</.button>
+            <.button phx-disable-with="Changing..."><%= gettext("Change Email") %></.button>
           </:actions>
         </.simple_form>
       </div>
@@ -46,25 +46,33 @@ defmodule TrarecordWeb.UserSettingsLive do
             id="hidden_user_email"
             value={@current_email}
           />
-          <.input field={@password_form[:password]} type="password" label="New password" required />
+          <.input
+            field={@password_form[:password]}
+            type="password"
+            label={gettext("New password")}
+            required
+          />
           <.input
             field={@password_form[:password_confirmation]}
             type="password"
-            label="Confirm new password"
+            label={gettext("Confirm new password")}
           />
           <.input
             field={@password_form[:current_password]}
             name="current_password"
             type="password"
-            label="Current password"
+            label={gettext("Current password")}
             id="current_password_for_password"
             value={@current_password}
             required
           />
           <:actions>
-            <.button phx-disable-with="Changing...">Change Password</.button>
+            <.button phx-disable-with="Changing..."><%= gettext("Change Password") %></.button>
           </:actions>
         </.simple_form>
+        <.link href="/users/log_out" method="delete">
+          <button class="btn btn-error text-white mt-4 w-full">Logout</button>
+        </.link>
       </div>
     </div>
 
@@ -76,7 +84,7 @@ defmodule TrarecordWeb.UserSettingsLive do
     socket =
       case Accounts.update_user_email(socket.assigns.current_user, token) do
         :ok ->
-          put_flash(socket, :info, "Email changed successfully.")
+          put_flash(socket, :info, gettext("Email changed successfully."))
 
         :error ->
           put_flash(socket, :error, "Email change link is invalid or it has expired.")
