@@ -33,6 +33,8 @@ config :trarecord, TrarecordWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :trarecord, Trarecord.Mailer, adapter: Swoosh.Adapters.Local
 
+config :trarecord, TrarecordWeb.Gettext, default_locale: "ja"
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
